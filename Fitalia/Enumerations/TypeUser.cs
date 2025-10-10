@@ -1,6 +1,8 @@
 ﻿namespace Fitalia.Enumerations
 {
-    public class TypeUser
+    public enum TypeUser
     {
+        Invitado,
+        Administrador,
     }
 }

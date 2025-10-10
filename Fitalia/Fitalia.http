@@ -1,6 +1,6 @@
 @Fitalia_HostAddress = http://localhost:5283
 
-GET {{Fitalia_HostAddress}}/weatherforecast/
+GET {{Fitalia_HostAddress}}
 Accept: application/json
 
 ###
