@@ -1,6 +1,11 @@
 ﻿namespace Fitalia.Enumerations
 {
-    public class TypeAnimo
+    public enum TypeAnimo
     {
+        Deprimido,
+        Triste,
+        Aburrido,
+        Contendo,
+        Feliz
     }
 }
