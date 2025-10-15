@@ -1,4 +1,4 @@
-﻿using Fitalia.Entities
+﻿using Fitalia.Entities;
 
 namespace Fitalia.Interfaces
 {

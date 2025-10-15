@@ -1,4 +1,5 @@
 ﻿using Fitalia.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Fitalia.Controllers
 {
@@ -10,7 +11,7 @@ namespace Fitalia.Controllers
         private readonly IIniciarSesionService _IniciarSesionService;
         private readonly ILogger<IniciarSesionController> _logger;
 
-        public LoginController(IIniciarSesionService IniciarSesionService, ILogger<IniciarSesionController> logger)
+        public IniciarSesionController(IIniciarSesionService IniciarSesionService, ILogger<IniciarSesionController> logger)
         {
             _IniciarSesionService = IniciarSesionService;
             _logger = logger;
@@ -20,7 +21,7 @@ namespace Fitalia.Controllers
         [Route("VerificarUsuario")]
         public async Task<IActionResult> IniciarSesion(string userName, string password)
         {
-            var user = await _IniciarSesionService.check(userName, password);
+            var user = await _IniciarSesionService.revisar(userName, password);
             return user != null ? Ok(user) : NotFound();
         }
     }
