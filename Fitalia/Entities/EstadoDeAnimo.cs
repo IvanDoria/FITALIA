@@ -4,9 +4,9 @@ namespace Fitalia.Entities
 {
     public class EstadoDeAnimo
     {
-        private int Id { get; set; }
-        private TypeAnimo Estado{ get; set; }
-        private DateTime Fecha { get; set; }
+        public int Id { get; set; }
+        public TypeAnimo Estado{ get; set; }
+        public DateTime Fecha { get; set; }
 
     }
 }

@@ -4,8 +4,8 @@ namespace Fitalia.Entities
 {
     public class ContenidoBienestar
     {
-        private int Id { get; set; }
-        private List<string> Video { get; set; } = new List<string>();
-        private List<string> Imagen { get; set; } = new List<string>();
+        public int Id { get; set; }
+        public List<string> Video { get; set; } = new List<string>();
+        public List<string> Imagen { get; set; } = new List<string>();
     }
 }

@@ -2,12 +2,11 @@
 {
     public class HabitoSaludable
     {
-        private int ID { get; set; }
+        public int ID { get; set; }
 
-        private string Nombre { get; set; }
-        private string Descripcion { get; set; }
-
-        private string Beneficio { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public string Beneficio { get; set; }
 
     }
 }
