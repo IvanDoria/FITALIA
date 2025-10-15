@@ -1,13 +1,21 @@
-﻿using Fitalia.Interfaces;
+﻿using Fitalia.DAO;
 using Fitalia.Entities;
+using Fitalia.Interfaces;
 
 namespace Fitalia.Services
 {
     public class IniciarSesionService : IIniciarSesionService
     {
-        public Task<Usuario> revisar(string UserName, string Password)
+        private readonly IIniciarSesionDAO _IniciarSesionDAO;
+        private readonly ILogger<IniciarSesionService> _logger;
+
+        public IniciarSesionService(IIniciarSesionDAO IniciarSesionDAO)
         {
-            return null;
+            _IniciarSesionDAO = IniciarSesionDAO;
+        }
+        public async Task<Persona> revisar(string userName, string password)
+        {
+            return await _IniciarSesionDAO.buscarUsuario(userName, password);
         }
     }
 }

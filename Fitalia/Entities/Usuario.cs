@@ -7,21 +7,21 @@ namespace Fitalia.Entities
     public class Usuario
     {
 
-        private int Id { get; set; }
+        public int Id { get; set; }
 
-        private string  NombreUsuario { get; set; }
+        public string  NombreUsuario { get; set; }
 
-        private string Correo { get; set; }
+        public string Correo { get; set; }
 
-        private string Contraseña { get; set; }
+        public string Contraseña { get; set; }
 
-        private TypeUser typeUser { get; set; }
+        public TypeUser typeUser { get; set; }
 
-        private HabitosSaludables HabitosSaludables { get; set; }
+        public HabitosSaludables HabitosSaludables { get; set; }
 
-        private  List<Recordatorios> Recordatorios { get; set; }
+        public  List<Recordatorios> Recordatorios { get; set; }
 
-        private EstadoDeAnimo EstadoDeAnimo { get; set; }
+        public EstadoDeAnimo EstadoDeAnimo { get; set; }
 
 
     }
