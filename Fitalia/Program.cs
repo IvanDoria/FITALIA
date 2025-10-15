@@ -1,6 +1,13 @@
+using Fitalia.Entities;
+using Fitalia.Interfaces;
+using Fitalia.Services;
+using Fitalia.DAO;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IIniciarSesionDAO, IniciarSesionDAO>();
+builder.Services.AddScoped<IIniciarSesionService, IniciarSesionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
