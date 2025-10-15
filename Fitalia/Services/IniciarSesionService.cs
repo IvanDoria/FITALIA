@@ -1,4 +1,5 @@
-﻿using Fitalia.Interfaces
+﻿using Fitalia.Interfaces;
+using Fitalia.Entities;
 
 namespace Fitalia.Services
 {
@@ -6,7 +7,7 @@ namespace Fitalia.Services
     {
         public Task<Usuario> revisar(string UserName, string Password)
         {
-
+            return null;
         }
     }
 }
