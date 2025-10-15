@@ -2,11 +2,11 @@
 {
     public class HabitosSaludables
     {
-        private int ID { get; set; }
-        private List<HabitoSaludable> habitos { get; set; } = new List<HabitoSaludable>();
-        private List<string> categorias { get; set; } = new List<string>();
-        private string recomendacion { get; set; }
-        private ContenidoBienestar contenidoBienestar { get; set; }
+        public int ID { get; set; }
+        public List<HabitoSaludable> habitos { get; set; } = new List<HabitoSaludable>();
+        public List<string> categorias { get; set; } = new List<string>();
+        public string recomendacion { get; set; }
+        public ContenidoBienestar contenidoBienestar { get; set; }
 
         public HabitosSaludables(int iD, List<HabitoSaludable> habitos, List<string> categorias,string recomendacion, ContenidoBienestar contenidoBienestar)
         {

@@ -2,15 +2,15 @@
 {
     public class Recordatorios
     {
-        private int Id { get; set; }
+        public int Id { get; set; }
 
-        private string Mensaje { get; set; }
+        public string Mensaje { get; set; }
 
-        private DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
-        private Boolean Activo { get; set; }
+        public Boolean Activo { get; set; }
 
-        private Boolean Posponerse { get; set; }
+        public Boolean Posponerse { get; set; }
 
     }
 }
