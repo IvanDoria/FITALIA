@@ -2,14 +2,14 @@
 {
     public class Persona
     {
-        private int ID { get; set; }
-        private string userID { get; set; }
-        private string nombre { get; set; }
-        private string? apellidoPaterno { get; set; }
-        private string? apellidoMaterno { get; set; }
-        private int edad { get; set; }
-        private string? numeroDeTelefono { get; set; }
-        private string sexo { get; set; }
+        public int ID { get; set; }
+        public string userID { get; set; }
+        public string nombre { get; set; }
+        public string? apellidoPaterno { get; set; }
+        public string? apellidoMaterno { get; set; }
+        public int edad { get; set; }
+        public string? numeroDeTelefono { get; set; }
+        public string sexo { get; set; }
 
 
 

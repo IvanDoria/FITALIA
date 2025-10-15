@@ -4,7 +4,7 @@ namespace Fitalia.Interfaces
 {
     public interface IIniciarSesionService
     {
-        public Task<Usuario> revisar(string UserName, string Password);
+        public Task<Persona> revisar(string UserName, string Password);
 
     }
 }
