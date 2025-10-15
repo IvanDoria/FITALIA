@@ -1,6 +1,12 @@
-﻿namespace Fitalia.Services
+﻿using Fitalia.Interfaces
+
+namespace Fitalia.Services
 {
-    public class IniciarSesionService
+    public class IniciarSesionService : IIniciarSesionService
     {
+        public Task<Usuario> revisar(string UserName, string Password)
+        {
+
+        }
     }
 }
