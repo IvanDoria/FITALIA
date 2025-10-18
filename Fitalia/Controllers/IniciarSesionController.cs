@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Fitalia.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("API/IniciarSesion")]
 
     public class IniciarSesionController : ControllerBase
     {
