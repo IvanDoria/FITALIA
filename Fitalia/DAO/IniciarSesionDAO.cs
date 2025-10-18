@@ -29,13 +29,16 @@ namespace Fitalia.DAO
             return new SqlConnection(_connectionString.ConnectionString);
         }
 
-        public async Task<Persona> buscarUsuario(string userName, string password)
+        public async Task<DatosUsuario> buscarUsuario(string userName, string password)
         {
             try
             {
+                _logger.LogInformation(userName);
+                _logger.LogInformation(password);
                 using var db = Connection();
-                var result = await db.QueryFirstOrDefaultAsync<Persona>(IniciarSesionQueries.buscarUsuario, new { UserName = userName, Password = password });
+                var result = await db.QueryFirstOrDefaultAsync<DatosUsuario>(IniciarSesionQueries.buscarUsuario, new { UserName = userName, Password = password});
                 _logger.LogInformation("Consulta exitosa de usuario en SQL Server");
+
                 return result;
             }
             catch (Exception ex)

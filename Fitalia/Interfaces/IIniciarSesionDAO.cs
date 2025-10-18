@@ -4,6 +4,6 @@ namespace Fitalia.Interfaces
 {
     public interface IIniciarSesionDAO
     {
-        public Task<Persona> buscarUsuario(string userName, string password);
+        public Task<DatosUsuario> buscarUsuario(string userName, string password);
     }
 }

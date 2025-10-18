@@ -13,7 +13,7 @@ namespace Fitalia.Services
         {
             _IniciarSesionDAO = IniciarSesionDAO;
         }
-        public async Task<Persona> revisar(string userName, string password)
+        public async Task<DatosUsuario> revisar(string userName, string password)
         {
             return await _IniciarSesionDAO.buscarUsuario(userName, password);
         }
