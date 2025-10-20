@@ -33,8 +33,6 @@ namespace Fitalia.DAO
         {
             try
             {
-                _logger.LogInformation(userName);
-                _logger.LogInformation(password);
                 using var db = Connection();
                 var result = await db.QueryFirstOrDefaultAsync<DatosUsuario>(IniciarSesionQueries.buscarUsuario, new { UserName = userName, Password = password});
                 _logger.LogInformation("Consulta exitosa de usuario en SQL Server");
