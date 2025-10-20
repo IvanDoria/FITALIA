@@ -19,6 +19,9 @@ builder.Services.Configure<SQLServerConfiguration>(options =>
 builder.Services.AddScoped<IIniciarSesionDAO, IniciarSesionDAO>();
 builder.Services.AddScoped<IIniciarSesionService, IniciarSesionService>();
 
+builder.Services.AddScoped<IRegistrarDAO, RegistrarDAO>();
+builder.Services.AddScoped<IRegistrarService, RegistrarService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +33,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "https://localhost:7150",
+            "https://localhost:7064",
             "http://localhost:5035",
             "http://127.0.0.1:5500",   
             "http://localhost:5500"     

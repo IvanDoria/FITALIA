@@ -4,6 +4,6 @@ namespace Fitalia.Interfaces
 {
     public interface IRegistrarService
     {
-        public Task<Boolean> RegistrarUsuario(Persona person, Usuario user);
+        public Task<string> RegistrarUsuario(Usuario user);
     }
 }

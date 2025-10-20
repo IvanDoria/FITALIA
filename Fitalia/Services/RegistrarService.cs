@@ -1,6 +1,8 @@
 ﻿using Fitalia.DAO;
 using Fitalia.Entities;
 using Fitalia.Interfaces;
+using Fitalia.Utilities;
+using Fitalia.Enumerations;
 
 namespace Fitalia.Services
 {
@@ -15,10 +17,24 @@ namespace Fitalia.Services
             _logger = logger;
         }
 
-        public async Task<Boolean> RegistrarUsuario(Persona person, Usuario user)
+        public async Task<string> RegistrarUsuario(Usuario usuario)
         {
+            var existe = await _registrarDAO.BuscarCorreo(usuario.Correo);
 
-            return await _registrarDAO.Registrar(new List<string>());
+            if (existe != null)
+            {
+                _logger.LogInformation("El correo ya existe.");
+            }
+            else
+            {
+                _logger.LogInformation("Correo disponible.");
+            }
+
+            usuario.NombreUsuario = CrearNombreUsuario.crearNombreUsuarioAleatorio(usuario.nombre, usuario.apellidoPaterno, usuario.apellidoMaterno);
+            usuario.typeUser = TypeUser.Invitado;
+            _logger.LogInformation(usuario.NombreUsuario);
+
+            return await _registrarDAO.Registrar(usuario);
         }
 
     }

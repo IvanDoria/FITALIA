@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Fitalia.Entities
 {
-    public class Usuario
+    public class Usuario:Persona
     {
 
         public int Id { get; set; }
@@ -22,6 +22,30 @@ namespace Fitalia.Entities
         public  List<Recordatorios> Recordatorios { get; set; }
 
         public EstadoDeAnimo EstadoDeAnimo { get; set; }
+
+
+
+        public Usuario(int id, string nombreUsuario, string correo, string contraseña, TypeUser typeUser, HabitosSaludables habitosSaludables, List<Recordatorios> recordatorios, EstadoDeAnimo estadoDeAnimo)
+        {
+            Id = id;
+            NombreUsuario = nombreUsuario;
+            Correo = correo;
+            Contraseña = contraseña;
+            this.typeUser = typeUser;
+            HabitosSaludables = habitosSaludables;
+            Recordatorios = recordatorios;
+            EstadoDeAnimo = estadoDeAnimo;
+        }
+
+
+
+        public Usuario()
+        {
+        }
+
+        public Usuario(string userId, string nombre, string apellidoPaterno, string apellidoMaterno, int edad, string numeroDeTelefono, string sexo) : base(userId, nombre, apellidoPaterno, apellidoMaterno, edad, numeroDeTelefono, sexo)
+        {
+        }
 
 
     }

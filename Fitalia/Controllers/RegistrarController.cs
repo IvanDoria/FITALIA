@@ -17,11 +17,12 @@ namespace Fitalia.Controllers
             _logger = logger;
         }
 
-        //[HttpPost]
-        //[Route("RegistrarUsuario")]
-        //public async Task<IActionResult> CreateUser(Persona person,Usuario user)
-        //{
-            //return await _RegistrarService.RegistrarUsuario(person, user) ? Ok("Usuario creado") : BadRequest("No se pudo guardar el usuario.");
-        //}
+        [HttpPost]
+        [Route("RegistrarUsuario")]
+        public async Task<IActionResult> CreateUser(Usuario user)
+        {
+            var respuesta = await _RegistrarService.RegistrarUsuario(user);
+            return respuesta.Equals("Registro realizado correctamente") ? Ok(new { mensaje = respuesta }) : BadRequest(new { mensaje = respuesta });
+        }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace Fitalia.Interfaces
+﻿using Fitalia.Entities;
+
+namespace Fitalia.Interfaces
 {
     public interface IRegistrarDAO
     {
-        Task<Boolean> Registrar (List<string> datos);
+        public Task<string> Registrar (Usuario usuario);
+        public Task<string> BuscarCorreo (string correo);
     }
 }
