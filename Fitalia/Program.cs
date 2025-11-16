@@ -22,6 +22,9 @@ builder.Services.AddScoped<IIniciarSesionService, IniciarSesionService>();
 builder.Services.AddScoped<IRegistrarDAO, RegistrarDAO>();
 builder.Services.AddScoped<IRegistrarService, RegistrarService>();
 
+builder.Services.AddScoped<IEstadoDeAnimoDAO, EstadoDeAnimoDAO>();
+builder.Services.AddScoped<IEstadoDeAnimoService, EstadoDeAnimoService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
