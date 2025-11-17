@@ -30,6 +30,7 @@ builder.Services.AddScoped<IGestionarPerfilService, GestionarPerfilService>();
 builder.Services.AddScoped<ISaludFisica, SaludFisicaDAO>();
 
 
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,4 +1,4 @@
-﻿namespace Fitalia.Entities
+namespace Fitalia.Entities
 {
     public class Persona
     {
