@@ -24,7 +24,9 @@ builder.Services.AddScoped<IRegistrarService, RegistrarService>();
 builder.Services.AddScoped<IEstadoDeAnimoDAO, EstadoDeAnimoDAO>();
 builder.Services.AddScoped<IEstadoDeAnimoService, EstadoDeAnimoService>();
 
-builder.Services.AddScoped<ISaludFisica, SaludFisicaDAO>();
+builder.Services.AddScoped<ISaludFisicaDAO, SaludFisicaDAO>();
+builder.Services.AddScoped<ISaludFisicaService, SaludFisicaService>();
+
 
 
 builder.Services.AddControllers();

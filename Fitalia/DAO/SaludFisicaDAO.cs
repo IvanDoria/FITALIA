@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Fitalia.DAO
 {
-    public class SaludFisicaDAO : ISaludFisica
+    public class SaludFisicaDAO : ISaludFisicaDAO
     {
         private readonly string _connectionString;
 
@@ -16,12 +16,15 @@ namespace Fitalia.DAO
         public async Task<bool> Insertar(SaludFisica actividad)
         {
             using var conn = new SqlConnection(_connectionString);
-            using var cmd = new SqlCommand("INSERT INTO SaludFisica (UserId, Tipo, DuracionMin, Intensidad) VALUES (@UserId, @Tipo, @DuracionMin, @Intensidad)", conn);
+            using var cmd = new SqlCommand(@"INSERT INTO SaludFisica 
+                (UserId, Tipo, DuracionMin, Intensidad, Fecha) 
+                VALUES (@UserId, @Tipo, @DuracionMin, @Intensidad, @Fecha)", conn);
 
             cmd.Parameters.AddWithValue("@UserId", actividad.UserId);
             cmd.Parameters.AddWithValue("@Tipo", actividad.Tipo);
             cmd.Parameters.AddWithValue("@DuracionMin", actividad.DuracionMin);
             cmd.Parameters.AddWithValue("@Intensidad", actividad.Intensidad);
+            cmd.Parameters.AddWithValue("@Fecha", actividad.Fecha);
 
             await conn.OpenAsync();
             return await cmd.ExecuteNonQueryAsync() > 0;
@@ -32,7 +35,8 @@ namespace Fitalia.DAO
             var lista = new List<SaludFisica>();
 
             using var conn = new SqlConnection(_connectionString);
-            using var cmd = new SqlCommand("SELECT * FROM SaludFisica WHERE UserId = @UserId ORDER BY Fecha DESC", conn);
+            using var cmd = new SqlCommand(
+                "SELECT * FROM SaludFisica WHERE UserId = @UserId ORDER BY Fecha DESC", conn);
 
             cmd.Parameters.AddWithValue("@UserId", userId);
 
