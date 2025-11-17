@@ -43,7 +43,7 @@ namespace Fitalia.Entities
         {
         }
 
-        public Usuario(string userId, string nombre, string apellidoPaterno, string apellidoMaterno, int edad, string numeroDeTelefono, string sexo) : base(userId, nombre, apellidoPaterno, apellidoMaterno, edad, numeroDeTelefono, sexo)
+        public Usuario(int userId, string nombre, string apellidoPaterno, string apellidoMaterno, string FechaNacimiento, string numeroDeTelefono, string sexo) : base(userId, nombre, apellidoPaterno, apellidoMaterno, FechaNacimiento, numeroDeTelefono, sexo)
         {
         }
 

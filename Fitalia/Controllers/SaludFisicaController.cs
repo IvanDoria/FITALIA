@@ -31,6 +31,7 @@ namespace Fitalia.Controllers
             var datos = await repo.ListarPorUsuario(userId);
             return Ok(datos);
         }
+
     }
 }
 

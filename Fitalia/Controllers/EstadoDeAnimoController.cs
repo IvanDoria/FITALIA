@@ -8,7 +8,7 @@ namespace Fitalia.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EstadoDeAnimoController :ControllerBase
+    public class EstadoDeAnimoController : ControllerBase
     {
         private readonly IEstadoDeAnimoService _IEstadoDeAnimoService;
         private readonly ILogger<EstadoDeAnimoController> _logger;
@@ -34,5 +34,6 @@ namespace Fitalia.Controllers
             var user = await _IEstadoDeAnimoService.guardarEstado(estado);
             return user == true ? Ok("Se ha guardado el estado exitosamente") : BadRequest("No se pudo guardar el estado");
         }
+        
     }
 }

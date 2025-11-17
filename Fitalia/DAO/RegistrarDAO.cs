@@ -41,7 +41,7 @@ namespace Fitalia.DAO
                 parameters.Add("@nombreInsertado", usuario.nombre);
                 parameters.Add("@apellidoPaternoInsertado", usuario.apellidoPaterno);
                 parameters.Add("@apellidoMaternoInsertado", usuario.apellidoMaterno);
-                parameters.Add("@edadInsertado", usuario.edad);
+                parameters.Add("@fechaNacimientoInsertado", usuario.FechaNacimiento);
                 parameters.Add("@numeroDeTelefonoInsertado", usuario.numeroDeTelefono);
                 parameters.Add("@sexoInsertado", usuario.sexo);
                 parameters.Add("@NombreUsuarioInsertado", usuario.NombreUsuario);

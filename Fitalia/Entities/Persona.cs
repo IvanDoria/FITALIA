@@ -6,21 +6,21 @@
         {
         }
 
-        public string userId { get; set; }
+        public int userId { get; set; }
         public string nombre { get; set; }
         public string? apellidoPaterno { get; set; }
         public string? apellidoMaterno { get; set; }
-        public int edad { get; set; }
+        public string FechaNacimiento { get; set; }
         public string? numeroDeTelefono { get; set; }
         public string sexo { get; set; }
 
-        public Persona(string userId, string nombre, string apellidoPaterno, string apellidoMaterno, int edad, string numeroDeTelefono, string sexo)
+        public Persona(int userId, string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento, string numeroDeTelefono, string sexo)
         {
             this.userId = userId;
             this.nombre = nombre;
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
-            this.edad = edad;
+            this.FechaNacimiento = fechaNacimiento;
             this.numeroDeTelefono = numeroDeTelefono;
             this.sexo = sexo;
         }

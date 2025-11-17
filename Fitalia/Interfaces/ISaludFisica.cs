@@ -6,6 +6,7 @@ namespace Fitalia.Interfaces
     {
         Task<bool> Insertar(SaludFisica actividad);
         Task<List<SaludFisica>> ListarPorUsuario(int userId);
+        
     }
 }
 

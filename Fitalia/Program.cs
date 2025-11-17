@@ -24,6 +24,9 @@ builder.Services.AddScoped<IRegistrarService, RegistrarService>();
 builder.Services.AddScoped<IEstadoDeAnimoDAO, EstadoDeAnimoDAO>();
 builder.Services.AddScoped<IEstadoDeAnimoService, EstadoDeAnimoService>();
 
+builder.Services.AddScoped<IGestionarPerfilDAO, GestionarPerfilDAO>();
+builder.Services.AddScoped<IGestionarPerfilService, GestionarPerfilService>();
+
 builder.Services.AddScoped<ISaludFisica, SaludFisicaDAO>();
 
 
@@ -36,9 +39,17 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontFitalia", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.WithOrigins(
+            "https://localhost:7150",
+            "https://localhost:7064",
+            "http://localhost:5035",
+            "http://127.0.0.1:5500",   
+            "http://localhost:5500",
+            "http://localhost:5282"
+
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     });
 });
 

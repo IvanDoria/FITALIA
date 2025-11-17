@@ -1,4 +1,4 @@
-@Fitalia_HostAddress = http://localhost:5283
+@Fitalia_HostAddress = http://localhost:5282
 
 GET {{Fitalia_HostAddress}}
 Accept: application/json
