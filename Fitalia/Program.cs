@@ -6,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("SQLServerConnection")
-    ?? throw new InvalidOperationException("Connection string 'SQLServerConnection' is not configured.");
+builder.WebHost.UseUrls("https://localhost:7064", "http://localhost:5283");
+
+var connectionString = builder.Configuration.GetConnectionString("SQLServerConnection") ?? throw new InvalidOperationException("Connection string 'SQLServerConnection' is not configured.");
 
 builder.Services.Configure<SQLServerConfiguration>(options =>
 {
