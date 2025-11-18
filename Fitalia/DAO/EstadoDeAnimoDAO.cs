@@ -6,6 +6,7 @@ using Fitalia.Utilities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using System.Data;
+using Fitalia.Enumerations;
 
 namespace Fitalia.DAO
 {
@@ -32,7 +33,7 @@ namespace Fitalia.DAO
                 using var db = Connection();
                 var result = await db.ExecuteAsync(EstadoDeAnimoQueries.guardarEstadoDeAnimo, new
                 {
-                    TypeEstadoAnimo = estadoDeAnimo.Estado,
+                    TypeEstadoAnimo = estadoDeAnimo.TipoDeAnimo,
                     UserIdDao = estadoDeAnimo.UserId,
                 });
                 _logger.LogInformation("Consulta exitosa de usuario en SQL Server");
@@ -47,29 +48,25 @@ namespace Fitalia.DAO
             return false;
         }
 
-        public async Task<string> obtenerEstado(string userId)
+        public async Task<EstadoDeAnimo> obtenerEstado(string userId)
         {
             try
             {
                 using var db = Connection();
-                var parameters = new DynamicParameters();
 
-                parameters.Add("@UserId", userId);
+                var resultadoRow = await db.QueryFirstOrDefaultAsync<EstadoDeAnimo>(
+                    EstadoDeAnimoQueries.obtenerEstadoHoy,
+                    new { UserId = userId }
+                );
 
-                parameters.Add("@fechaImport", DateTime.Now);
+                
+                return resultadoRow;
 
-                parameters.Add("@Mensaje", dbType: DbType.String, size: 100, direction: ParameterDirection.Output);
-
-                await db.ExecuteAsync("getEstadoDeAnimo", parameters, commandType: CommandType.StoredProcedure);
-                string mensaje = parameters.Get<string>("@Mensaje");
-
-                _logger.LogInformation($"Resultado del registro: {mensaje}");
-                return mensaje;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al insertar en SQL Server: {ex.Message}");
-                return $"Error: {ex.Message}";
+                _logger.LogError($"Error al obtener estado de SQL Server: {ex.Message}");
+                return null;
             }
         }
     }
