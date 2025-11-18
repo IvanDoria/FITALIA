@@ -27,8 +27,8 @@ builder.Services.AddScoped<IEstadoDeAnimoService, EstadoDeAnimoService>();
 builder.Services.AddScoped<IGestionarPerfilDAO, GestionarPerfilDAO>();
 builder.Services.AddScoped<IGestionarPerfilService, GestionarPerfilService>();
 
-builder.Services.AddScoped<ISaludFisica, SaludFisicaDAO>();
-
+builder.Services.AddScoped<ISaludFisicaDAO, SaludFisicaDAO>();
+builder.Services.AddScoped<ISaludFisicaService, SaludFisicaService>();
 
 
 builder.Services.AddControllers();

@@ -1,6 +1,7 @@
 ﻿using Fitalia.Entities;
 using Fitalia.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Net.WebSockets;
 
 namespace Fitalia.Services
 {
@@ -17,7 +18,7 @@ namespace Fitalia.Services
         public async Task<bool> guardarEstado(EstadoDeAnimo estado)
         {
 
-            if (!((int)estado.Estado > 0 && (int)estado.Estado < 6))
+            if (!((int)estado.TipoDeAnimo > 0 && (int)estado.TipoDeAnimo < 6))
             {
                 return false;
             }
@@ -28,9 +29,13 @@ namespace Fitalia.Services
             
         }
 
-        public async Task<string> getEstado(string userId)
+        public async Task<EstadoDeAnimo> getEstado(string userId)
         {
-            return await _EstadoDeAnimoDAO.obtenerEstado(userId);
+            var response = await _EstadoDeAnimoDAO.obtenerEstado(userId);
+            if (response == null) {
+                _logger.LogInformation("No se pudo encontrar un estado de animo");
+            }
+             return response;
         }
     }
 }
