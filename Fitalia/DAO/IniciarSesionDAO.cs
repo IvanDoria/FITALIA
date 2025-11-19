@@ -46,5 +46,14 @@ namespace Fitalia.DAO
             }
             return null;
         }
+
+        public async Task<Usuario> GetUsuarioById(int id)
+        {
+            using var db = Connection();
+            var sql = "SELECT * FROM Usuario WHERE Id = @Id";
+            return await db.QueryFirstOrDefaultAsync<Usuario>(sql, new { Id = id });
+
+        }
+
     }
 }

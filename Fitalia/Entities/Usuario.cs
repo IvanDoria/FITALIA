@@ -19,13 +19,13 @@ namespace Fitalia.Entities
 
         public HabitosSaludables HabitosSaludables { get; set; }
 
-        public  List<Recordatorios> Recordatorios { get; set; }
+        public  List<Recordatorio> Recordatorios { get; set; }
 
         public EstadoDeAnimo EstadoDeAnimo { get; set; }
 
 
 
-        public Usuario(int id, string nombreUsuario, string correo, string contraseña, TypeUser typeUser, HabitosSaludables habitosSaludables, List<Recordatorios> recordatorios, EstadoDeAnimo estadoDeAnimo)
+        public Usuario(int id, string nombreUsuario, string correo, string contraseña, TypeUser typeUser, HabitosSaludables habitosSaludables, List<Recordatorio> recordatorios, EstadoDeAnimo estadoDeAnimo)
         {
             Id = id;
             NombreUsuario = nombreUsuario;
