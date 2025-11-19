@@ -8,7 +8,9 @@
     public int DuracionMin { get; set; }
     public string Intensidad { get; set; }
     public DateTime Fecha { get; set; }
-}
+    public bool Cumplido { get; set; }
+
+    }
 }
 
 

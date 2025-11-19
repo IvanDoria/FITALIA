@@ -17,13 +17,14 @@ namespace Fitalia.DAO
         {
             using var conn = new SqlConnection(_connectionString);
             using var cmd = new SqlCommand(@"INSERT INTO SaludFisica 
-                (UserId, Tipo, DuracionMin, Intensidad, Fecha) 
-                VALUES (@UserId, @Tipo, @DuracionMin, @Intensidad, @Fecha)", conn);
+                (UserId, Tipo, DuracionMin, Intensidad, Cumplido, Fecha) 
+                VALUES (@UserId, @Tipo, @DuracionMin, @Intensidad, @Cumplido, @Fecha)", conn);
 
             cmd.Parameters.AddWithValue("@UserId", actividad.UserId);
             cmd.Parameters.AddWithValue("@Tipo", actividad.Tipo);
             cmd.Parameters.AddWithValue("@DuracionMin", actividad.DuracionMin);
             cmd.Parameters.AddWithValue("@Intensidad", actividad.Intensidad);
+            cmd.Parameters.AddWithValue("@Cumplido", actividad.Cumplido);
             cmd.Parameters.AddWithValue("@Fecha", actividad.Fecha);
 
             await conn.OpenAsync();
@@ -52,12 +53,59 @@ namespace Fitalia.DAO
                     Tipo = reader["Tipo"].ToString(),
                     DuracionMin = (int)reader["DuracionMin"],
                     Intensidad = reader["Intensidad"].ToString(),
+                    Cumplido = (bool)reader["Cumplido"],
                     Fecha = (DateTime)reader["Fecha"]
                 });
             }
 
             return lista;
         }
+
+        public async Task<bool> Editar(int id, SaludFisica actividad)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(@"UPDATE SaludFisica SET
+                Tipo = @Tipo,
+                DuracionMin = @DuracionMin,
+                Intensidad = @Intensidad,
+                Cumplido = @Cumplido
+                WHERE Id = @Id", conn);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Tipo", actividad.Tipo);
+            cmd.Parameters.AddWithValue("@DuracionMin", actividad.DuracionMin);
+            cmd.Parameters.AddWithValue("@Intensidad", actividad.Intensidad);
+            cmd.Parameters.AddWithValue("@Cumplido", actividad.Cumplido);
+
+            await conn.OpenAsync();
+            return await cmd.ExecuteNonQueryAsync() > 0;
+        }
+
+        public async Task<bool> MarcarCumplido(int id)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(
+                "UPDATE SaludFisica SET Cumplido = 1 WHERE Id = @Id", conn);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            await conn.OpenAsync();
+            return await cmd.ExecuteNonQueryAsync() > 0;
+        }
+
+        public async Task<bool> Eliminar(int id)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand("DELETE FROM SaludFisica WHERE Id = @Id", conn);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            await conn.OpenAsync();
+            return await cmd.ExecuteNonQueryAsync() > 0;
+        }
+
     }
 }
+
+
 

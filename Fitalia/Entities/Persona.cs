@@ -8,10 +8,10 @@ namespace Fitalia.Entities
 
         public int userId { get; set; }
         public string nombre { get; set; }
-        public string? apellidoPaterno { get; set; }
-        public string? apellidoMaterno { get; set; }
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
         public string FechaNacimiento { get; set; }
-        public string? numeroDeTelefono { get; set; }
+        public string numeroDeTelefono { get; set; }
         public string sexo { get; set; }
 
         public Persona(int userId, string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento, string numeroDeTelefono, string sexo)
