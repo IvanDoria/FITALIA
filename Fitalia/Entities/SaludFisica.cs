@@ -10,6 +10,9 @@
     public DateTime Fecha { get; set; }
     public bool Cumplido { get; set; }
 
+     // OPCIONAL (si deseas ver los recordatorios asociados)
+     public ICollection<Recordatorio> Recordatorios { get; set; }
+
     }
 }
 

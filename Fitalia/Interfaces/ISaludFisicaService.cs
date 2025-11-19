@@ -4,7 +4,7 @@ namespace Fitalia.Services
 {
     public interface ISaludFisicaService
     {
-        Task<bool> RegistrarActividad(SaludFisica actividad);
+        Task<int> RegistrarActividad(SaludFisica actividad);
         Task<List<SaludFisica>> ObtenerHistorial(int userId);
         Task<bool> EditarActividad(int id, SaludFisica actividad);
         Task<bool> MarcarComoCumplido(int id);

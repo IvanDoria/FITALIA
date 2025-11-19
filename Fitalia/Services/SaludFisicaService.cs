@@ -13,7 +13,7 @@ namespace Fitalia.Services
             this.dao = dao;
         }
 
-        public async Task<bool> RegistrarActividad(SaludFisica actividad)
+        public async Task<int> RegistrarActividad(SaludFisica actividad)
         {
             actividad.Fecha = DateTime.Now;
             actividad.Cumplido = false;

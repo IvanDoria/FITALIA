@@ -18,9 +18,14 @@ namespace Fitalia.Controllers
         [HttpPost("Registrar")]
         public async Task<IActionResult> Registrar([FromBody] SaludFisica actividad)
         {
-            var ok = await service.RegistrarActividad(actividad);
-            return ok ? Ok("Registro guardado") : BadRequest("Error al guardar");
+            var id = await service.RegistrarActividad(actividad);
+
+            if (id > 0)
+                return Ok(new { success = true, id });
+
+            return BadRequest(new { success = false, message = "Error al guardar" });
         }
+
 
         [HttpGet("Historial/{userId}")]
         public async Task<IActionResult> Historial(int userId)

@@ -2,7 +2,9 @@ using Fitalia.DAO;
 using Fitalia.Interfaces;
 using Fitalia.Services;
 using Fitalia.Utilities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,10 @@ builder.Services.Configure<SQLServerConfiguration>(options =>
 {
     options.ConnectionString = connectionString;
 });
+
+builder.Services.AddScoped<IDbConnection>(sp =>
+    new SqlConnection(connectionString)
+);
 
 builder.Services.AddScoped<IIniciarSesionDAO, IniciarSesionDAO>();
 builder.Services.AddScoped<IIniciarSesionService, IniciarSesionService>();
@@ -29,6 +35,9 @@ builder.Services.AddScoped<IGestionarPerfilService, GestionarPerfilService>();
 
 builder.Services.AddScoped<ISaludFisicaDAO, SaludFisicaDAO>();
 builder.Services.AddScoped<ISaludFisicaService, SaludFisicaService>();
+
+builder.Services.AddScoped<IRecordatoriosDAO, RecordatoriosDAO>();
+builder.Services.AddScoped<IRecordatoriosService, RecordatoriosService>();
 
 
 builder.Services.AddControllers();
