@@ -29,7 +29,30 @@ namespace Fitalia.Controllers
             return Ok(datos);
         }
 
+        [HttpPut("Editar/{id}")]
+        public async Task<IActionResult> Editar(int id, [FromBody] SaludFisica actividad)
+        {
+            var ok = await service.EditarActividad(id, actividad);
+            return ok ? Ok("Actividad editada") : BadRequest("No se pudo editar");
+        }
+
+        [HttpPut("Cumplido/{id}")]
+        public async Task<IActionResult> MarcarCumplido(int id)
+        {
+            var ok = await service.MarcarComoCumplido(id);
+            return ok ? Ok("Marcado como cumplido") : BadRequest("No se pudo marcar");
+        }
+
+        [HttpDelete("Eliminar/{id}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            var ok = await service.EliminarActividad(id);
+            return ok ? Ok("Eliminado correctamente") : BadRequest("No se pudo eliminar");
+        }
+
+
     }
 }
+
 
 

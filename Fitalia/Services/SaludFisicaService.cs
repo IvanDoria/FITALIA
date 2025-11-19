@@ -16,6 +16,7 @@ namespace Fitalia.Services
         public async Task<bool> RegistrarActividad(SaludFisica actividad)
         {
             actividad.Fecha = DateTime.Now;
+            actividad.Cumplido = false;
             return await dao.Insertar(actividad);
         }
 
@@ -23,6 +24,23 @@ namespace Fitalia.Services
         {
             return await dao.ListarPorUsuario(userId);
         }
+
+        public async Task<bool> EditarActividad(int id, SaludFisica actividad)
+        {
+            return await dao.Editar(id, actividad);
+        }
+
+        public async Task<bool> MarcarComoCumplido(int id)
+        {
+            return await dao.MarcarCumplido(id);
+        }
+
+        public async Task<bool> EliminarActividad(int id)
+        {
+            return await dao.Eliminar(id);
+        }
+
     }
 }
+
 
