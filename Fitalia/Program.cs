@@ -17,6 +17,7 @@ builder.Services.Configure<SQLServerConfiguration>(options =>
     options.ConnectionString = connectionString;
 });
 
+
 builder.Services.AddScoped<IDbConnection>(sp =>
     new SqlConnection(connectionString)
 );
@@ -39,6 +40,7 @@ builder.Services.AddScoped<ISaludFisicaService, SaludFisicaService>();
 builder.Services.AddScoped<IRecordatoriosDAO, RecordatoriosDAO>();
 builder.Services.AddScoped<IRecordatoriosService, RecordatoriosService>();
 
+builder.Services.AddHostedService<Fitalia.Services.NotificacionWorker>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
