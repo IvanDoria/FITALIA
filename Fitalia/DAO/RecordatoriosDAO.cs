@@ -50,13 +50,21 @@ namespace Fitalia.DAO
             await _connection.ExecuteAsync(RecordatoriosQueries.Delete, new { Id = id });
         }
 
-        public async Task<List<Recordatorio>> GetPendientesParaEnviar(DateTime ahora)
+        // Asegúrate de cambiar el tipo de retorno a RecordatorioEmailDTO
+        public async Task<List<RecordatorioEmailDTO>> GetPendientesParaEnviar(DateTime ahora)
         {
-            var rows = await _connection.QueryAsync<Recordatorio>(
+            // Dapper mapea automáticamente las columnas a las propiedades del DTO
+            var rows = await _connection.QueryAsync<RecordatorioEmailDTO>(
                 RecordatoriosQueries.GetPendientesParaEnviar,
                 new { Ahora = ahora });
 
             return rows.ToList();
+        }
+
+        // Agrega este método para marcarlo como "ya enviado"
+        public async Task Desactivar(int id)
+        {
+            await _connection.ExecuteAsync(RecordatoriosQueries.Desactivar, new { Id = id });
         }
 
     }

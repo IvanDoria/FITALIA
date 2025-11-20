@@ -9,8 +9,8 @@ namespace Fitalia.Interfaces
         Task<int> Create(Recordatorio model);
         Task<bool> Update(int id, Recordatorio model);
         Task Delete(int id);
-        Task<List<Recordatorio>> GetPendientesParaEnviar(DateTime ahora);
-
+        Task<List<RecordatorioEmailDTO>> GetPendientesParaEnviar(DateTime ahora);
+        Task Desactivar(int id);
 
     }
 }
