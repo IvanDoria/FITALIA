@@ -1,5 +1,6 @@
 ﻿using Fitalia.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Fitalia.Entities;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -53,18 +54,18 @@ namespace Fitalia.Controllers
             return result ? Ok("Correo actualizado correctamente") : BadRequest("No se pudo actualizar el correo");
         }
 
-        [HttpPut]
-        [Route("CambiarContrasena")]
-        public async Task<IActionResult> CambiarContrasena(int userId, string contrasena)
+        [HttpPut("CambiarFotoPerfil")]
+        public async Task<IActionResult> CambiarFotoPerfil([FromBody] ActualizarFoto data)
         {
-            var result = await _perfilService.CambiarContrasena(userId, contrasena);
-            return result ? Ok("Contraseña actualizada correctamente") : BadRequest("No se pudo actualizar la contraseña");
-        }
-        [HttpPut]
-        [Route("CambiarFotoPerfil")]
-        public async Task<IActionResult> CambiarFotoPerfil(int userId, string fotoPerfil)
-        {
-            var result = await _perfilService.CambiarFotoPerfil(userId, fotoPerfil);
+            // Validamos que llegue data
+            if (data == null || string.IsNullOrWhiteSpace(data.FotoPerfil))
+            {
+                return BadRequest("La foto no puede estar vacía.");
+            }
+
+            // Usamos data.UserId y data.FotoPerfil que vienen del DTO
+            var result = await _perfilService.CambiarFotoPerfil(data.UserId, data.FotoPerfil);
+
             return result ? Ok("Foto de perfil actualizada correctamente") : BadRequest("No se pudo actualizar la foto de perfil");
         }
 

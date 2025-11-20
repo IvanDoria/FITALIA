@@ -9,7 +9,7 @@ namespace Fitalia.Entities
         public string Correo { get; set; }
 
         public TypeUser typeUser { get; set; }
-
+        public string FotoPerfil { get; set; }
         public DatosUsuario() { }
 
     }
