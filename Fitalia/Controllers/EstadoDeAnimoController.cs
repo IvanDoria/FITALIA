@@ -29,7 +29,7 @@ namespace Fitalia.Controllers
 
         [HttpPost]
         [Route("SeleccionarEstado")]
-        public async Task<IActionResult> IniciarSesion(EstadoDeAnimo estado)
+        public async Task<IActionResult> guardarEstado(EstadoDeAnimo estado)
         {
             var user = await _IEstadoDeAnimoService.guardarEstado(estado);
             return user == true ? Ok("Se ha guardado el estado exitosamente") : BadRequest("No se pudo guardar el estado");

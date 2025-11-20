@@ -33,19 +33,19 @@ namespace Fitalia.DAO
                 using var db = Connection();
                 var result = await db.ExecuteAsync(EstadoDeAnimoQueries.guardarEstadoDeAnimo, new
                 {
-                    TypeEstadoAnimo = estadoDeAnimo.TipoDeAnimo,
+                    TipoDeAnimo = (int)estadoDeAnimo.TipoDeAnimo,
+
                     UserIdDao = estadoDeAnimo.UserId,
                 });
-                _logger.LogInformation("Consulta exitosa de usuario en SQL Server");
 
-                return result>0;
+                _logger.LogInformation("Consulta exitosa de usuario en SQL Server");
+                return result > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error, no se a podido verificar los datos del usuario: {ex.Message}");
-                Console.WriteLine($"Error SQL Server: {ex.Message}");
+                _logger.LogError($"Error al obtener estado de SQL Server: {ex.Message}");
+                return false;
             }
-            return false;
         }
 
         public async Task<EstadoDeAnimo> obtenerEstado(string userId)
