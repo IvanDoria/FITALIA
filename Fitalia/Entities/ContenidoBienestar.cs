@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Fitalia.Entities
+﻿namespace Fitalia.Entities
 {
     public class ContenidoBienestar
     {
         public int Id { get; set; }
-        public List<string> Video { get; set; } = new List<string>();
-        public List<string> Imagen { get; set; } = new List<string>();
+        public string Formato { get; set; } // <--- ¡DEBE SER STRING!
+        public string Contenido { get; set; } // <--- ¡DEBE SER STRING!
+        public int TypeAnimo { get; set; }
+
+        // ... (Otras propiedades si las tienes, pero verifica las de la BD)
     }
 }

@@ -29,9 +29,9 @@ namespace Fitalia.Services
             
         }
 
-        public async Task<EstadoDeAnimo> getEstado(string userId)
+        public async Task<EstadoDeAnimo> getEstado(string userId, string fecha)
         {
-            var response = await _EstadoDeAnimoDAO.obtenerEstado(userId);
+            var response = await _EstadoDeAnimoDAO.obtenerEstado(userId, fecha);
             if (response == null) {
                 _logger.LogInformation("No se pudo encontrar un estado de animo");
             }

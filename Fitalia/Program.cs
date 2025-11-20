@@ -40,6 +40,8 @@ builder.Services.AddScoped<ISaludFisicaService, SaludFisicaService>();
 builder.Services.AddScoped<IRecordatoriosDAO, RecordatoriosDAO>();
 builder.Services.AddScoped<IRecordatoriosService, RecordatoriosService>();
 
+builder.Services.AddScoped<IDistribucionContenidoDAO, DistribucionContenidoDAO>();
+builder.Services.AddScoped<IDistribucionContenidoService, DistribucionContenidoService>();
 builder.Services.AddHostedService<Fitalia.Services.NotificacionWorker>();
 
 builder.Services.AddControllers();

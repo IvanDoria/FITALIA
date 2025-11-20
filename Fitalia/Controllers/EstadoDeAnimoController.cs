@@ -21,9 +21,9 @@ namespace Fitalia.Controllers
 
         [HttpGet]
         [Route("ObtenerEstado")]
-        public async Task<IActionResult> getEstado(string userId)
+        public async Task<IActionResult> getEstado(string userId, string fecha)
         {
-            var estado = await _IEstadoDeAnimoService.getEstado(userId);
+            var estado = await _IEstadoDeAnimoService.getEstado(userId, fecha);
             return estado != null ? Ok(estado) : BadRequest("No se pudo acceder al estado");
         }
 

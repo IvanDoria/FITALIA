@@ -48,20 +48,36 @@ namespace Fitalia.DAO
             }
         }
 
-        public async Task<EstadoDeAnimo> obtenerEstado(string userId)
+        public async Task<EstadoDeAnimo> obtenerEstado(string userId, string fecha)
         {
             try
             {
                 using var db = Connection();
 
+                // 1. Convertir la fecha string (ej: "2025-11-19") a DateTime
+                // Es crucial para que Dapper la envíe como un tipo de fecha correcto.
+                if (!DateTime.TryParse(fecha, out DateTime fechaAComparar))
+                {
+                    _logger.LogError("Formato de fecha inválido.");
+                    return null;
+                }
+
+                // 2. Definir el objeto de parámetros. 
+                // ¡Los nombres deben coincidir exactamente con las variables de la consulta SQL!
+                var parameters = new
+                {
+                    // La consulta SQL espera @UserId
+                    UserId = userId,
+                    // La consulta SQL espera @FechaAComparar
+                    FechaAComparar = fechaAComparar
+                };
+
                 var resultadoRow = await db.QueryFirstOrDefaultAsync<EstadoDeAnimo>(
-                    EstadoDeAnimoQueries.obtenerEstadoHoy,
-                    new { UserId = userId }
+                    EstadoDeAnimoQueries.obtenerEstadoHoy, // Tu consulta estática (ej: SELECT ... WHERE UserId = @UserId AND Fecha = @FechaAComparar)
+                    parameters // Pasamos el objeto con los parámetros correctos
                 );
 
-                
                 return resultadoRow;
-
             }
             catch (Exception ex)
             {
