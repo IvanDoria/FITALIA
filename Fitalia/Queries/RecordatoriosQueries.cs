@@ -34,10 +34,26 @@
             DELETE FROM Recordatorio WHERE Id = @Id;
         ";
 
-        public static string GetPendientesParaEnviar =
-    @"SELECT *
-      FROM Recordatorio
-      WHERE Activo = 1 AND Fecha <= @Ahora";
+        public static string GetPendientesParaEnviar = @"
+        SELECT
+            r.*,
+            u.Correo,
+            p.Nombre AS NombrePersona,
+            s.Tipo AS NombreActividad
+        FROM Recordatorio r
+        INNER JOIN Usuario u ON r.UserId = u.UserId
+        INNER JOIN Persona p ON u.UserId = p.userId
+        INNER JOIN SaludFisica s ON r.SaludFisicaId = s.Id
+        WHERE r.Activo = 1
+          AND r.Fecha <= @Ahora";
+
+        // Query para desactivar el recordatorio una vez enviado
+        public static string Desactivar = @"
+        UPDATE Recordatorio 
+        SET Activo = 0 
+        WHERE Id = @Id";
+
+
 
     }
 }
